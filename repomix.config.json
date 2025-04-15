@@ -1,0 +1,20 @@
+{
+  "include": [
+    "Controllers/**",
+    "Models/**",
+    "Views/**",
+    "Program.cs",
+    "appsettings.json",
+    "MyFirstWebApp.csproj",
+    "README.md"
+  ],
+  "ignore": [
+    "bin/**",
+    "obj/**",
+    "node_modules/**",
+    ".vs/**"
+  ],
+  "outputStyle": "markdown",
+  "showLineNumbers": true,
+  "topFilesLen": 10
+}
