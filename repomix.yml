@@ -1,0 +1,71 @@
+name: MyFirstWebApp
+description: ASP.NET Core MVC 待辦事項應用程序
+version: 1.0.0
+author: ryus2002
+
+components:
+  - name: core
+    description: 核心應用程序組件
+    path: ./
+    include:
+      - Controllers/**
+      - Models/**
+      - Views/**
+      - Program.cs
+      - appsettings.json
+      - appsettings.Development.json
+      - MyFirstWebApp.csproj
+
+  - name: static-assets
+    description: 靜態資源文件
+    path: ./wwwroot
+    include:
+      - css/**
+      - js/**
+      - lib/**
+      - favicon.ico
+
+  - name: docs
+    description: 文檔文件
+    path: ./
+    include:
+      - README.md
+      - LICENSE
+      - docs/**
+
+  - name: tests
+    description: 測試項目
+    path: ./Tests
+    include:
+      - "**/*.cs"
+      - "**/*.csproj"
+
+mixins:
+  - name: default
+    description: 默認開發環境
+    components:
+      - core
+      - static-assets
+      - docs
+
+  - name: full
+    description: 完整專案包括測試
+    components:
+      - core
+      - static-assets
+      - docs
+      - tests
+
+  - name: production
+    description: 僅包含生產所需組件
+    components:
+      - core
+      - static-assets
+
+hooks:
+  pre-mix:
+    - echo "開始混合 RepoMix 組件..."
+  
+  post-mix:
+    - echo "RepoMix 組件混合完成!"
+    - dotnet restore
