@@ -8,12 +8,14 @@
     "MyFirstWebApp.csproj",
     "README.md"
   ],
-  "ignore": [
-    "bin/**",
-    "obj/**",
-    "node_modules/**",
-    ".vs/**"
-  ],
+  "ignore": {
+    "patterns": [
+      "bin/**",
+      "obj/**",
+      "node_modules/**",
+      ".vs/**"
+    ]
+  },
   "outputStyle": "markdown",
   "showLineNumbers": true,
   "topFilesLen": 10
