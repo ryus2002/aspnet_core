@@ -1,0 +1,40 @@
+# .NET Core 專案的 .gitignore 文件
+
+# 構建結果
+bin/
+obj/
+
+# Visual Studio 文件
+.vs/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+
+# IDE 文件
+.idea/
+.vscode/
+*.sln.iml
+
+# 本地配置文件
+appsettings.Development.json
+
+# 日誌文件
+*.log
+logs/
+
+# 系統文件
+.DS_Store
+Thumbs.db
+
+# 其他不需要的文件
+[Tt]emp/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn

@@ -1,0 +1,50 @@
+@model MyFirstWebApp.Models.TodoItem
+
+@{
+    ViewData["Title"] = "待辦事項詳情";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsDone)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.IsDone)
+            {
+                <span class="text-success">✓ 已完成</span>
+            }
+            else
+            {
+                <span class="text-danger">✗ 未完成</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Toggle" asp-route-id="@Model.Id" class="btn btn-warning">
+        @(Model.IsDone ? "標記為未完成" : "標記為已完成")
+    </a>
+    <a asp-action="Index" class="btn btn-secondary">返回列表</a>
+</div>

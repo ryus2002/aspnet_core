@@ -1,0 +1,51 @@
+@model IEnumerable<MyFirstWebApp.Models.TodoItem>
+
+@{
+    ViewData["Title"] = "待辦事項列表";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">創建新待辦事項</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.IsDone)</th>
+            <th>@Html.DisplayNameFor(model => model.CreatedDate)</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    @if (item.IsDone)
+                    {
+                        <span class="text-success">✓ 已完成</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">✗ 未完成</span>
+                    }
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.CreatedDate)</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">詳情</a>
+                    <a asp-action="Toggle" asp-route-id="@item.Id" class="btn btn-warning btn-sm">
+                        @(item.IsDone ? "標記為未完成" : "標記為已完成")
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm" 
+                       onclick="return confirm('確定要刪除這個待辦事項嗎？');">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
